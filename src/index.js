@@ -8,6 +8,7 @@ import reducer from './reducers'
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
+// storeを使うため 
 const store = createStore(reducer)
 
 ReactDOM.render(
