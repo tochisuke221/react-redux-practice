@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { increment, decrement } from '../actions'
+import { readEvents } from '../actions'
 
-class App extends Component {
+class EventsIndex extends Component {
+  componentDidMount(){
+    this.props.readEvents()
+  }
+
   render() {
-    // AppはComponentクラスであるため,このAppコンポーネントはComponentクラスを継承している
-    // Component(App)クラスは初期化時にpropsを引数として受け取り、クラスのインスタンスの属性として保持します。
+    // EventsIndexはComponentクラスであるため,このEventsIndexコンポーネントはComponentクラスを継承している
+    // Component(EventsIndex)クラスは初期化時にpropsを引数として受け取り、クラスのインスタンスの属性として保持します。
     const props = this.props
     
     return (
@@ -27,8 +31,8 @@ class App extends Component {
  * connect関数の第二引数に渡す。
  */ 
 
-const mapStateToProps = state => ({ value: state.count.value })
-const mapDispatchToProps = ({ increment, decrement })
+const mapStateToProps = state => ({})
+const mapDispatchToProps = ({ readEvents })
 /** こんな書き方もできるが冗長 */
 // const mapDispatchToProps = dispatch => ({
 //   increment: () => dispatch(increment()),
@@ -41,4 +45,4 @@ const mapDispatchToProps = ({ increment, decrement })
  * stateを一括管理しているReduxのstoreは、Reactとは別の場所にあるので、
  * Componentとstoreを繋げる必要があり、そのためにconnect関数を使います
  * */
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex)
