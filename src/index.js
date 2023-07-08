@@ -11,8 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 // storeを使うため 
 const store = createStore(reducer, applyMiddleware(thunk))
-console.log('index.js' + store)
-console.log(store)
+
 ReactDOM.render(
   <Provider store={store}>
     <EventsIndex />
