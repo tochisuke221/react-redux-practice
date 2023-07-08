@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import { readEvents } from '../actions'
+import { Link } from 'react-router-dom'
 
 class EventsIndex extends Component {
   componentDidMount(){
@@ -23,19 +24,22 @@ class EventsIndex extends Component {
     // EventsIndexはComponentクラスであるため,このEventsIndexコンポーネントはComponentクラスを継承している
     // Component(EventsIndex)クラスは初期化時にpropsを引数として受け取り、クラスのインスタンスの属性として保持します。
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderEvents()}
-        </tbody>
+      <React.Fragment>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>タイトル</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderEvents()}
+          </tbody>
+        </table>
 
-      </table>
+        <Link to="/events/new">新規イベント登録</Link>
+      </React.Fragment>
     )
   }
 }
